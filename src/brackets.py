@@ -26,28 +26,21 @@
 # № 20 на литкоде
 
 
-def find_same_brackets(brackets_str: str) -> bool:
-    if brackets_str[0] == ")" or brackets_str[0] == "]" or brackets_str[0] == "}":
-        return False
-    else:
-        list_tmp = []
-        for char in brackets_str:
-            if char == "(" or char == "[" or char == "{":
-                list_tmp.append(char)
-            else:
-                if char == ")":
-                    if "(" in list_tmp:
-                        list_tmp.remove("(")
-                elif char == "]":
-                    if "[" in list_tmp:
-                        list_tmp.remove("[")
-                elif char == "}":
-                    if "{" in list_tmp:
-                        list_tmp.remove("{")
-        if not list_tmp:
-            return True
+def find_same_brackets(s: str) -> bool:
+    list_tmp = []
+    dict_tmp = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+    }
+
+    for i in s:
+        if i in dict_tmp:
+            list_tmp.append(i)
         else:
-            return False
+            if not list_tmp or i != dict_tmp[list_tmp.pop()]:
+                return False
+    return list_tmp == []
 
 
 print(find_same_brackets("()[]{}"))
