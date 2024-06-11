@@ -42,7 +42,7 @@ def filter_english_names(names_list: list) -> list:
 
 def save_to_file(file_name: str, data: str) -> None:
     """Сохраняет данные в файл"""
-    with open("../data/russian_names.txt", "w", encoding="utf-8") as names_file:
+    with open(f"../data/{name}.txt", "w", encoding="utf-8") as names_file:
         names_file.write(data)
 
 
